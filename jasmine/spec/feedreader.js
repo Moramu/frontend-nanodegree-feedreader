@@ -81,10 +81,12 @@ $(function() {
     });     
 
     /* TODO: Write a new test suite named "Initial Entries" */
-    describe('loadFeed', function() {
+    describe('Initial Entries', function() {
 
-        beforeEach(function (done) {
-          
+        beforeEach(function(done) {
+            loadFeed(0, function () {
+                done();
+            });
         });
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -92,8 +94,10 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('It is at least a single .entry element after loading', function() {
-
+        it('It is at least a single .entry element after loading', function(done) {
+            let entry = $('.feed .entry');
+            expect(entry.length).toBeGreaterThan(0);
+            done();
         });
     });
 
@@ -101,10 +105,29 @@ $(function() {
     // describe('New Feed Selection', function() {
     describe('New Feed Selection', function() {
 
+        let baseFeed,
+            newFeed;
+
+        beforeEach(function(done){
+            loadFeed(0, function () {
+                baseFeed = $('.feed').html();
+                done();                
+            });
+         });
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         it('New feed loaded', function(done){
+
+            loadFeed(1, function(){
+                newFeed = $('.feed').html();
+                expect(newFeed).not.toBe(baseFeed);
+                done();
+            });
+
+        });
 
     });
 
