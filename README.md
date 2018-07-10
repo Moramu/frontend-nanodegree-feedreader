@@ -13,6 +13,6 @@ This project a web-based application that reads RSS feeds, and using Jasmine for
 - 'New Feed Selection: changes the content when new feed is loaded' ensures that, when a new feed is loaded by the loadFeed function, the content actually changes.
 
 ## Getting Started
-To run application you can download and run ```index.html``` file, or just click [here](https://moramu.github.io/frontend-nanodegree-feedreader/)
+To run application you can download and run ```index.html``` file.
 
 
